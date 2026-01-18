@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-sage: #7FA99B;
+    --color-sage-dark: #6B8E85;
+    --color-sage-light: #A8C5BA;
+    --color-mint-bg: #E8F5F0;
+    --color-mint-light: #F0F8F5;
+    --color-charcoal: #2C3E50;
+    --color-blue-link: #4A90E2;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        background: linear-gradient(135deg, var(--color-mint-bg) 0%, var(--color-mint-light) 50%, #F5FAF8 100%);
+        min-height: 100vh;
+    }
+}
+
+@layer components {
+    /* Navigation */
+    .nav-bar {
+        position: sticky;
+        top: 0;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        z-index: 100;
+    }
+
+    .nav-link {
+        position: relative;
+        color: var(--color-charcoal);
+        font-weight: 500;
+        padding-bottom: 4px;
+        transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-sage);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    .nav-link:hover {
+        color: var(--color-sage-dark);
+    }
+
+    .nav-link.active {
+        color: var(--color-charcoal);
+    }
+
+    /* Cards */
+    .card-elevated {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+    }
+
+    .card-elevated:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Before You Begin Card */
+    .before-begin-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .before-begin-header {
+        background: var(--color-sage);
+        color: white;
+        padding: 16px 24px;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .before-begin-body {
+        padding: 24px;
+    }
+
+    .before-begin-body li {
+        position: relative;
+        padding: 8px 0 8px 28px;
+        color: var(--color-charcoal);
+    }
+
+    .before-begin-body li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background: var(--color-sage);
+        border-radius: 50%;
+    }
+
+    /* Start Session Button */
+    .start-session-btn {
+        background: white;
+        border: none;
+        border-radius: 12px;
+        padding: 20px 28px;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-charcoal);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .start-session-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    .start-session-btn .play-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--color-sage);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: transform 0.3s ease;
+    }
+
+    .start-session-btn:hover .play-icon {
+        transform: scale(1.1);
+    }
+
+    /* Typography */
+    .heading-display {
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+    }
+
+    .text-body {
+        font-family: var(--font-body);
+        line-height: 1.7;
+    }
+}
+
+@layer utilities {
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
